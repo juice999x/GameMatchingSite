@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('matchings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('sex')->nullable();
-            $table->string('self_image', 100)->nullable();
-            $table->rememberToken();
+            $table->string('comment', 200);
+            $table->foreignId('timeline_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->integer('user_id2');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('matchings');
     }
 };
