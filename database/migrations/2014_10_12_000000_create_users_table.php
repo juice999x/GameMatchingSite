@@ -20,7 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('sex')->nullable();
-            $table->string('self_image', 100)->nullable();
+            $table->string('birthday')->nullable();
+            $table->string('game')->nullable();
+            $table->string('easy_introduction')->nullable();
+            $table->string('image_url')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

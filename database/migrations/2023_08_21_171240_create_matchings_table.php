@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('comment', 200);
             $table->foreignId('timeline_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->integer('user_id2');
+            $table->foreignId('user_id1')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id2')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

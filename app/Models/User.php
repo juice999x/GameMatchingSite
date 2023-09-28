@@ -18,9 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
+        'sex',
+        'birthday',
+        'game',
+        'easy_introduction',
+        'image_url',
     ];
 
     /**
@@ -41,4 +47,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\Timeline','likes','user_id','timeline_id')->withTimestamps();
+    }
+    
+    public function isLike($timelineId)
+    {
+      return $this->likes()->where('timeline_id',$timelineId)->exists();
+    }
+    
+    public function like($timelineId)
+    {
+      if($this->isLike($timelineId)){
+      } else {
+        $this->likes()->attach($timelineId);
+      }
+    }
+    
+    public function unlike($timelineId)
+    {
+      if($this->isLike($timelineId)){
+        $this->likes()->detach($timelineId);
+      } else {
+      }
+    }
+
 }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,23 +21,44 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/timeline', function () {
-    return view('timeline');
-});
-
-Route::get('/timeline', [TimelineController::class, 'index']);
-
-Route::get('/posts/timeline', [TimelineController::class, 'timeline']);
-
-Route::get('/posts/timeline2', [TimelineController::class, 'timeline2']);
-
-Route::get('/posts/like', [TimelineController::class, 'like']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', [TimelineController::class, 'fakehome']);
 
 Route::middleware('auth')->group(function () {
+    
+    Route::get('/timeline', [TimelineController::class, 'index']);
+    
+    Route::get('/matching/message/{user}', [TimelineController::class, 'message'])->name('home');
+    
+    Route::post('/matching/{user}/message', [TimelineController::class, 'send']);
+    
+    Route::get('/matching/posts', [TimelineController::class, 'post']);
+    
+    Route::post('/timeline', [TimelineController::class, 'store']);
+    
+    Route::get('/matching/likes/{user}', [TimelineController::class, 'like']);
+    
+    Route::post('/like/{timelineId}', [LikeController::class,'store']);
+    
+    Route::post('/unlike/{timelineId}', [LikeController::class,'destroy']);
+    
+    Route::get('/matching/userprofiles/{user}', [TimelineController::class, 'profile']);
+    
+    Route::get('/matching/{user}/edit', [TimelineController::class, 'edit']);
+    
+    Route::put('/matching/edit/{user}', [TimelineController::class, 'update']);
+    
+    Route::get('/', [MessageController::class, 'getDate']);
+    
+    Route::post('/add', [MessageController::class, 'add'])->name('add');
+    
+    Route::get('/matching/privacy/{user}', [TimelineController::class, 'privacy']);
+    
+    Route::get('/logout', [TimelineController::class, 'logout']);
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
