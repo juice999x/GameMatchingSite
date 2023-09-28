@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('timelines', function (Blueprint $table) {
             $table->id();
-            $table->string('self_introduction', 200);
+            $table->string('looking_for_sex', 50);
+            $table->string('number_of_people', 50);
             $table->string('intrested_in', 50);
-            $table->foreignId('user_id')->constrained();
+            $table->string('self_introduction', 200);
+            //$table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
