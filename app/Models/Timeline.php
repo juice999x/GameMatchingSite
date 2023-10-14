@@ -14,5 +14,22 @@ class Timeline extends Model
         'number_of_people',
         'intrested_in',
         'self_introduction',
+        'user_id'
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
+    protected static function boot()
+    {
+        parent::boot();
+
+        // 保存時user_idをログインユーザーに設定
+        self::saving(function($timeline) {
+            $timeline->user_id = \Auth::id();
+        });
+    }
+    
 }

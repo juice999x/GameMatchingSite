@@ -38,7 +38,7 @@ class MessageController extends Controller
         'name' => $user->name,
         'comment' => $comment
     ]);
-    return redirect()->route('home', ['user' => 1]);
+    return redirect()->route('home', ['user' => $user->id]);
     }
     
     public function getDate()

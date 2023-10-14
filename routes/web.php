@@ -17,11 +17,7 @@ use App\Http\Controllers\MessageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [TimelineController::class, 'fakehome']);
+Route::get('/fakehome', [TimelineController::class, 'fakehome']);
 
 Route::middleware('auth')->group(function () {
     
@@ -29,7 +25,11 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/matching/message/{user}', [TimelineController::class, 'message'])->name('home');
     
-    Route::post('/matching/{user}/message', [TimelineController::class, 'send']);
+    Route::get('/matching/directmessage/{user}', [TimelineController::class, 'directmessage']);
+    
+    Route::get('/', [MessageController::class, 'getDate']);
+    
+    Route::post('/add', [MessageController::class, 'add'])->name('add');
     
     Route::get('/matching/posts', [TimelineController::class, 'post']);
     
@@ -46,10 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/matching/{user}/edit', [TimelineController::class, 'edit']);
     
     Route::put('/matching/edit/{user}', [TimelineController::class, 'update']);
-    
-    Route::get('/', [MessageController::class, 'getDate']);
-    
-    Route::post('/add', [MessageController::class, 'add'])->name('add');
     
     Route::get('/matching/privacy/{user}', [TimelineController::class, 'privacy']);
     

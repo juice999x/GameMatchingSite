@@ -10,6 +10,12 @@ use App\Models\User;
 
 class LikeController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store($timelineId)
     {
         Auth::user()->like($timelineId);

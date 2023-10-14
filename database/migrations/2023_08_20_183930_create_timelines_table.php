@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('number_of_people', 50);
             $table->string('intrested_in', 50);
             $table->string('self_introduction', 200);
-            //$table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

@@ -25,15 +25,9 @@
         
         <div class="flex flex-wrap bg-white w-full h-screen">
             <div class="w-2/12 bg-white rounded p-3 shadow-lg">
-                @if( Auth::check() )
-                <div class="flex items-center space-x-4 p-2 mb-5">
-                    <img style="height: 60px; width:60px;" src="{{ $user->image_url }}" class="rounded-full flex justify-center" alt="画像が読み込めません。"/>
-                    <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $user->name }}</h4>
-                </div>
-                @endif
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="/timeline" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 bg-gray-200 focus:shadow-outline">
+                        <a href="/login" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
                                 <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -44,16 +38,6 @@
                     </li>
                     <li>
                         <a href="/login" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                </svg>
-                            </span>
-                            <span>メッセージ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/matching/posts" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
                                 <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -82,26 +66,6 @@
                             <span>プロフィール</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="/login" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
-                            </span>
-                            <span>プライバシー</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                                </svg>
-                            </span>
-                            <span>ログアウト</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         
@@ -123,14 +87,14 @@
                 
                               <!-- Content that showing in the box -->
                                     <div class="flex-auto">
-                                        <h1 class="text-2xl font-bold text-center">{{ $user->name }}</h1>
+                                        <h1 class="text-2xl font-bold text-center">{{ $users->name }}</h1>
                                         <h1 class="text=lg font-bold text-center">性別: {{ $timeline->looking_for_sex }}</h1>
                                         <h1 class="text=lg font-bold text-center">人数: {{ $timeline->number_of_people }}</h1>
                                         <h1 class="text-xl font-bold text-center border-b">募集するゲーム: {{$timeline->intrested_in }}</h1>
                                         <h1 class="text=lg font-bold text-center whitespace-pre-line">コメント: 
                                         {{ $timeline->self_introduction }}</h1>
                                     </div>
-                                    <button onclick="like({{$user->id}})">いいね</button>
+                                    <button class="hover:text-gray-300" onclick="like({{$timeline->id}})">いいね</button>
                                 </div>
                             @endif
                            
@@ -145,14 +109,14 @@
                 
                           <!-- Content that showing in the box -->
                                     <div class="flex-auto">
-                                        <h1 class="text-2xl font-bold text-center">{{ $user->name }}</h1>
+                                        <h1 class="text-2xl font-bold text-center">{{ $users->name }}</h1>
                                         <h1 class="text=lg font-bold text-center">性別: {{ $timeline->looking_for_sex }}</h1>
                                         <h1 class="text=lg font-bold text-center">人数: {{ $timeline->number_of_people }}</h1>
                                         <h1 class="text-xl font-bold text-center border-b">募集するゲーム: {{$timeline->intrested_in }}</h1>
                                         <h1 class="text=lg font-bold text-center whitespace-pre-line">コメント: 
                                         {{ $timeline->self_introduction }}</h1>
                                     </div>
-                                    <a href="#" class="text-center text-white hover:text-gray-300">Download materials</a>
+                                    <button class="hover:text-gray-300" onclick="like({{$timeline->id}})">いいね</button>
                                 </div>
                             @endif
                 
@@ -167,14 +131,14 @@
                 
                               <!-- Content that showing in the box -->
                                     <div class="flex-auto">
-                                        <h1 class="text-2xl font-bold text-center">{{ $user->name }}</h1>
+                                        <h1 class="text-2xl font-bold text-center">{{ $users->name }}</h1>
                                         <h1 class="text=lg font-bold text-center">性別: {{ $timeline->looking_for_sex }}</h1>
                                         <h1 class="text=lg font-bold text-center">人数: {{ $timeline->number_of_people }}</h1>
                                         <h1 class="text-xl font-bold text-center border-b">募集するゲーム: {{$timeline->intrested_in }}</h1>
                                         <h1 class="text=lg font-bold text-center whitespace-pre-line">コメント: 
                                         {{ $timeline->self_introduction }}</h1>
                                     </div>
-                                    <a href="#" class="text-center text-white hover:text-gray-300">Download materials</a>
+                                    <button class="hover:text-gray-300" onclick="like({{$timeline->id}})">いいね</button>
                                 </div>
                             @endif
                     
@@ -189,14 +153,14 @@
                 
                               <!-- Content that showing in the box -->
                                     <div class="flex-auto">
-                                        <h1 class="text-2xl font-bold text-center">{{ $user->name }}</h1>
+                                        <h1 class="text-2xl font-bold text-center">{{ $users->name }}</h1>
                                         <h1 class="text=lg font-bold text-center">性別: {{ $timeline->looking_for_sex }}</h1>
                                         <h1 class="text=lg font-bold text-center">人数: {{ $timeline->number_of_people }}</h1>
                                         <h1 class="text-xl font-bold text-center border-b">募集するゲーム: {{$timeline->intrested_in }}</h1>
                                         <h1 class="text=lg font-bold text-center whitespace-pre-line">コメント: 
                                         {{ $timeline->self_introduction }}</h1>
                                     </div>
-                                    <a href="#" class="text-center text-white hover:text-gray-300">Download materials</a>
+                                    <button class="hover:text-gray-300" onclick="like({{$timeline->id}})">いいね</button>
                                 </div>
                             @endif
                 
@@ -211,14 +175,14 @@
                   
                                 <!-- Content that showing in the box -->
                                     <div class="flex-auto">
-                                        <h1 class="text-2xl font-bold text-center">{{ $user->name }}</h1>
+                                        <h1 class="text-2xl font-bold text-center">{{ $users->name }}</h1>
                                         <h1 class="text=lg font-bold text-center">性別: {{ $timeline->looking_for_sex }}</h1>
                                         <h1 class="text=lg font-bold text-center">人数: {{ $timeline->number_of_people }}</h1>
                                         <h1 class="text-xl font-bold text-center border-b">募集するゲーム: {{$timeline->intrested_in }}</h1>
                                         <h1 class="text=lg font-bold text-center whitespace-pre-line">コメント: 
                                         {{ $timeline->self_introduction }}</h1>
                                     </div>
-                                    <a href="#" class="text-center text-white hover:text-gray-300">Download materials</a>
+                                    <button class="hover:text-gray-300" onclick="like({{$timeline->id}})">いいね</button>
                                 </div>
                               @endif
                             </div>

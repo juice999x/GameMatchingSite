@@ -9,6 +9,15 @@ class Like extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+      'user_id',
+    ];
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
     public function likes()
     {
         return $this->belongsToMany('App\Models\Timeline','likes','user_id','timeline_id')->withTimestamps();

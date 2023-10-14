@@ -15,22 +15,34 @@ class TimelineController extends Controller
     
     public function fakehome(Timeline $timeline, User $user)
     {
-        return view('matching.fakehome')->with(['timelines'=>$timeline->get(),  'user' => $user]);
+        return view('matching.fakehome')->with(['timelines'=>$timeline->get(),  'users' => $user]);
+    }
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
     
     public function index(Timeline $timeline, User $user)
     {
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        //dd($a);
-        return view('matching.timeline')->with(['timelines'=>$timeline->get(), 'user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        //dd($user);
+        return view('matching.timeline')->with(['timelines'=>$timeline->get(), 'users' => $user]);
     }
     
     public function message(User $user)
     {
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        return view('matching.message')->with(['user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        return view('matching.message')->with(['users' => $user]);
+    }
+    
+    public function directmessage(User $user, Matching $matching)
+    {
+        $id = Auth::id();
+        $matching = Matching::where('user_id1', '=', $id) -> where('user_id2', '=', $user )->first();
+        return view('matching.message')->with(['users' => $matching]);
     }
     
     public function send(Request $request, Matching $matching)
@@ -43,39 +55,39 @@ class TimelineController extends Controller
     public function post(User $user)
     {
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        return view('matching.post')->with(['user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        return view('matching.post')->with(['users' => $user]);
     }
     
-    public function store(Request $request, Timeline $timeline)
+    public function store(Request $request, Timeline $timeline, User $user)
     {
         $input = $request['timeline'];
         $timeline->fill($input)->save();
         return redirect('/matching/posts');
     }
     
-    public function like(User $user)
+    public function like(Like $like, User $user)
     {
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        return view('matching.like')->with(['user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        //dd($like);
+        return view('matching.like')->with(['likes'=>$like->get(),  'users' => $user]);
     }
     
     public function profile(User $user)
     {
         //dd($user->first());
         $id = Auth::id();
-        $a = User::where('id', '=', $id);
-        //dd($a);
-        return view('matching.userprofile')->with(['user' => $user]);
+        $user = User::where('id', '=', $id)->first();
+        return view('matching.userprofile')->with(['users' => $user]);
     }
     
     public function edit(User $user)
     {
         //dd($user);
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        return view('matching.profileedit')->with(['user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        return view('matching.profileedit')->with(['users' => $user]);
     }
     
     public function update(Request $request, User $user)
@@ -93,13 +105,13 @@ class TimelineController extends Controller
     {
         //dd($user);
         $id = Auth::id();
-        $a = User::where('id', '=', $id)->first();
-        return view('matching.privacy')->with(['user' => $a]);
+        $user = User::where('id', '=', $id)->first();
+        return view('matching.privacy')->with(['users' => $user]);
     }
     
     public function logout()
     {
-        return Auth::logout();
+        return view('auth.login');
     }
 
 }
