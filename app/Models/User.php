@@ -48,6 +48,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function timelines()
+    {
+        return $this->hasMany('App\Models\Timeline'); 
+    }
+    
     public function likes()
     {
         return $this->belongsToMany('App\Models\Timeline','likes','user_id','timeline_id')->withTimestamps();

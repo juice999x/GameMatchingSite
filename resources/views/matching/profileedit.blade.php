@@ -13,8 +13,8 @@
         <div class="flex flex-wrap bg-white w-full h-screen">
             <div class="w-2/12 bg-white rounded p-3 shadow-lg">
                 <div class="flex items-center space-x-4 p-2 mb-5">
-                   <img style="height: 60px; width:60px;" src="{{ $user->image_url }}" class="rounded-full flex justify-center" alt="画像が読み込めません。"/>
-                    <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $user->name }}</h4>
+                   <img style="height: 60px; width:60px;" src="{{ $users->image_url }}" class="rounded-full flex justify-center" alt="画像が読み込めません。"/>
+                    <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $users->name }}</h4>
                 </div>
                 <ul class="space-y-2 text-sm">
                     <li>
@@ -28,16 +28,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/matching/message/{{ $user->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                </svg>
-                            </span>
-                            <span>メッセージ</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/matching/posts" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
                                 <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,7 +38,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/matching/likes/{{ $user->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                        <a href="/matching/likes/{{ $users->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class=" text-gray-600">
                                 <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -58,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/matching/userprofiles/{{ $user->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 bg-gray-200 focus:shadow-outline">
+                        <a href="/matching/userprofiles/{{ $users->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
                                 <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -68,24 +58,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/matching/privacy/{{ $user->id }}" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
-                            </span>
-                            <span>プライバシー</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                            <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                                </svg>
-                            </span>
-                            <span>ログアウト</span>
-                        </a>
+                        <form method="post" action="{{ route('logout') }}">
+                        @csrf
+                            <a class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                                <span class="text-gray-600">
+                                    <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <button
+                                    onclick="event.preventDefault(); this.closest('form').submit();">ログアウト
+                                    </button>
+                                </div>
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -94,26 +81,26 @@
                 <div class="p-4 text-black">
                     <div class="p-8 rounded border border-gray-200">
                         
-                        <form action="/matching/edit/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/matching/edit/{{ $users->id }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="flex items-center space-x-4">
-                                <img style="height: 150px; width:150px;" src="{{ $user->image_url }}" class="rounded-full" alt="画像が読み込めません。"/>
+                                <img style="height: 150px; width:150px;" src="{{ $users->image_url }}" class="rounded-full" alt="画像が読み込めません。"/>
                                 <h1 class="font-medium text-2xl">プロフィール</h1>
                             </div>
                             <input type="file" name="image" class="mt-4">
                             <div class="mt-8 grid lg:grid-cols-1 gap-4">
                                 <div>
                                     <label for="name" class="text-sm text-gray-700 block mb-1 font-medium">名前</label>
-                                    <input type="text" name="user[name]" id="name" value="{{ $user->name }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="ニックネーム" />
+                                    <input type="text" name="user[name]" id="name" value="{{ $users->name }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="ニックネーム" />
                                 </div>
                                 <div>
                                     <label for="email" class="text-sm text-gray-700 block mb-1 font-medium">メールアドレス</label>
-                                    <input type="text" name="user[email]" id="email" value="{{ $user->email }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"/>
+                                    <input type="text" name="user[email]" id="email" value="{{ $users->email }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"/>
                                 </div>
                                 <div>
                                     <label for="sex" class="text-sm text-gray-700 block mb-1 font-medium">性別</label>
-                                    <select name="user[sex]" id="sex" value="{{ $user->sex }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="性別">
+                                    <select name="user[sex]" id="sex" value="{{ $users->sex }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="性別">
                                         <option selected>性別</option>
                                         <option>男性</option>
                                         <option>女性</option>
@@ -122,11 +109,11 @@
                                 </div>
                                 <div>
                                     <label for="brithday" class="text-sm text-gray-700 block mb-1 font-medium">誕生日</label>
-                                    <input type="text" name="user[birthday]" id="brithday" value="{{ $user->birthday }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="(2000/01/01)" />
+                                    <input type="text" name="user[birthday]" id="brithday" value="{{ $users->birthday }}" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="(2000/01/01)" />
                                 </div>
                                 <div>
                                     <label for="game" class="text-sm text-gray-700 block mb-1 font-medium">好きなゲーム</label>
-                                    <input type="text" name="user[game]" id="game" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $user->game }}" />
+                                    <input type="text" name="user[game]" id="game" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $users->game }}" />
                                 </div>
                                 <div>
                                     <label for="bio" class="text-sm text-gray-700 block mb-1 font-medium">簡単な自己紹介</label>
