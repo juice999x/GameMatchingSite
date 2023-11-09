@@ -13,7 +13,7 @@
         <div class="flex flex-wrap bg-white w-full h-screen">
             <div class="w-2/12 bg-white rounded p-3 shadow-lg">
                 <div class="flex items-center space-x-4 p-2 mb-5">
-                    <img style="height: 60px; width:60px;" src="{{ $users->image_url }}" class="rounded-full flex justify-center" alt="画像が読み込めません。"/>
+                    <img style="height: 60px; width:60px;" src="{{ $users->image_url }}" class="rounded-full flex justify-center" onerror="this.src='null';" alt="プロフィール画像"/>
                     <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $users->name }}</h4>
                 </div>
                 <ul class="space-y-2 text-sm">
@@ -81,7 +81,7 @@
                 <div class="p-4 text-black">
                     <div class="p-8 rounded border border-gray-200">
                         <div class="flex items-center space-x-4">
-                            <img style="height: 150px; width:150px;" src="{{ $users->image_url }}" class="rounded-full" alt="画像が読み込めません。"/>
+                            <img style="height: 150px; width:150px;" src="{{ $users->image_url }}" class="rounded-full" onerror="this.src='null';" alt="プロフィール画像"/>
                             <h1 class="font-medium text-2xl">プロフィール</h1>
                             <button onclick="location.href='/matching/message/{{ $users->id }}'" class="py-3 px-5 bg-white text-white rounded hover:bg-gray-300 active:bg-gray-500 disabled:opacity-50">
                                 <span class="text-gray-800">
