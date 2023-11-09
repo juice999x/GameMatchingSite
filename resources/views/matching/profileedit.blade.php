@@ -85,7 +85,7 @@
                             @csrf
                             @method('PUT')
                             <div class="flex items-center space-x-4">
-                                <img style="height: 150px; width:150px;" src="{{ $users->image_url }}" class="rounded-full" onerror="this.src='null';" alt="プロフィール画像"/>
+                                <img style="height: 150px; width:150px;" src="{{ $users->image_url }}" class="rounded-full" onerror="this.src='';" alt="プロフィール画像"/>
                                 <h1 class="font-medium text-2xl">プロフィール</h1>
                             </div>
                             <input type="file" name="image" class="mt-4">
