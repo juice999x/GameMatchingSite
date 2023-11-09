@@ -34,7 +34,7 @@
         <div class="flex flex-wrap bg-white w-full h-screen">
             <div class="w-2/12 bg-white rounded p-3 shadow-lg">
                 <div class="flex items-center space-x-4 p-2 mb-5">
-                    <img style="height: 60px; width:60px;" src="{{ $users->image_url }}" class="rounded-full flex justify-center" alt="画像が読み込めません。"/>
+                    <img style="height: 60px; width:60px;" src="{{ $users->image_url }}" class="rounded-full flex justify-center" onerror="this.src='null';" alt="プロフィール画像"/>
                     <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $users->name }}</h4>
                 </div>
                 <ul class="space-y-2 text-sm">
