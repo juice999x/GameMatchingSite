@@ -1,4 +1,4 @@
-![ヘッダー画像](https://github.com/juice999x/GameMatchingSite/assets/136160772/c4122731-7dbc-4924-a700-dfc8051b863b)
+![ヘッダー画像](https://github.com/juice999x/GameMatchingSite/assets/136160772/2278d4a5-1f59-48e6-ba06-10912390f00b)
 
 <br />
 
