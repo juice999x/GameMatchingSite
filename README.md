@@ -25,4 +25,8 @@ https://gemagema-7fd96a9caeea.herokuapp.com/login
 <br />
 
 ## 機能一覧
-
+| タイムライン画面 |　ログイン画面 |
+| ---- | ---- |
+| ![Top画面](https://github.com/juice999x/GameMatchingSite/assets/136160772/42031017-31bb-4309-a062-a219657776fd)
+| ![ログイン画面](/docs/img/app-view/login_1.1.png) |
+| 登録せずにサービスをお試しいただくためのトライアル機能を実装しました。 | ログインIDとパスワードでの認証機能を実装しました。 |
