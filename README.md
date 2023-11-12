@@ -19,7 +19,8 @@ https://gemagema-7fd96a9caeea.herokuapp.com/login
 <br />
 
 ## サイトのイメージ
-![アプリケーションのイメージ](https://github.com/juice999x/GameMatchingSite/assets/136160772/0e782f57-15e3-4fc8-9ca5-f81901c6e131)
+![アプリケーションのイメージ](https://github.com/juice999x/GameMatchingSite/assets/136160772/d4bb9bd7-5542-460b-80c8-0410105360bf)
+
 
 <br />
 
