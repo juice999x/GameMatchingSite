@@ -2,7 +2,7 @@
 
 <br />
 
-## サービスのURL
+## サイトのURL
 
 https://gemagema-7fd96a9caeea.herokuapp.com/login
 
@@ -18,9 +18,10 @@ https://gemagema-7fd96a9caeea.herokuapp.com/login
 
 <br />
 
-## アプリケーションのイメージ
+## サイトのイメージ
 ![アプリケーションのイメージ](https://github.com/juice999x/GameMatchingSite/assets/136160772/0e782f57-15e3-4fc8-9ca5-f81901c6e131)
 
 <br />
 
 ## 機能一覧
+
